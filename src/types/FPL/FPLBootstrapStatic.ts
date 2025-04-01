@@ -1,4 +1,4 @@
-export interface FPLRoot {
+export interface FPLBootstrapStaticRoot {
   chips: Chip[]
   events: Event[]
   game_settings: GameSettings
