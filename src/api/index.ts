@@ -1,22 +1,20 @@
-import { WeeklyFixture } from '@/types/WeeklyFixture'
+import { Fixture } from '@/types/FPL/FPLFixture'
+import { BootstrapStatic } from '@/types/BootstrapStatic'
 
-export const fetchWeeklyFixtures = async (
-  start: number,
-  end: number
-): Promise<WeeklyFixture[]> => {
-  console.log('Fetching weekly fixtures...')
+const BASE_URL = '/api'
 
-  // await delay(200 + Math.floor(Math.random() * 2000))
+export const fetchBootstrapStatic = async (): Promise<BootstrapStatic> => {
+  const response = await fetch(`${BASE_URL}/bootstrap-static`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch bootstrap data')
+  }
+  return response.json()
+}
 
-  return fetch(`api/weekly-fixtures?start=${start}&end=${end}`)
-    .then((response) => {
-      if (!response.ok) {
-        return Promise.reject('Failed to fetch weekly fixtures')
-      }
-      return response.json()
-    })
-    .catch((error) => {
-      console.error('Failed to fetch weekly fixtures:', error)
-      return Promise.reject('Failed to load weekly fixtures')
-    })
+export const fetchFixtures = async (): Promise<Fixture[]> => {
+  const response = await fetch(`${BASE_URL}/fixtures`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch fixtures')
+  }
+  return response.json()
 }
