@@ -1,9 +1,7 @@
-export type FDRRoot = FDR[]
-
-export interface FDR {
-  gameweek: number
-  homeTeam: string
-  homeFDR: number
-  awayTeam: string
-  awayFDR: number
+export enum FDR {
+  Effortless = 1,
+  Easy = 2,
+  Moderate = 3,
+  Hard = 4,
+  Nightmare = 5,
 }
