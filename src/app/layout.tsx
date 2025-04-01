@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
-import QueryProvider from "@/provider/QueryProvider";
+import QueryProvider from '@/provider/QueryProvider'
+import { Theme } from '@radix-ui/themes'
 
+import '@radix-ui/themes/styles.css'
 import './globals.css'
 
 const geistSans = Geist({
@@ -31,7 +33,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryProvider>
-          {children}
+          <Theme
+            appearance="dark"
+            accentColor="teal"
+            grayColor="slate"
+            panelBackground="solid"
+            scaling="100%"
+            radius="full"
+          >
+            {children}
+          </Theme>
         </QueryProvider>
       </body>
     </html>
